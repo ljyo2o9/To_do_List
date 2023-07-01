@@ -41,15 +41,20 @@ Container body() {
             ),
           ],
         ),
-        ListView.builder(
-          itemCount: todolist.length,
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListTile(
-              title: Text(todolist[0]['title']),
-            ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: todolist.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                leading: IconButton(
+                    icon: const Icon(Icons.more_vert), onPressed: () {}),
+                title: Text(todolist[index]['title']),
+              );
+            },
           ),
-        )
+        ),
       ],
     ),
   );
