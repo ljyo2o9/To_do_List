@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 AppBar appbar() {
   return AppBar(
+    backgroundColor: const Color(0xFF3e63fc),
+    elevation: 0,
     title: const Text('TO DO LIST'),
     centerTitle: true,
     leading: GestureDetector(
