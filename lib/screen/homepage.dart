@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:to_do_list/screen/appbar.dart';
 import 'package:to_do_list/screen/body.dart';
+import 'package:to_do_list/screen/floatingActionButton.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: appbar(),
       body: body(),
+      floatingActionButton: floatingActionButton(),
     );
   }
 }
