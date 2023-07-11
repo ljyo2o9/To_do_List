@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:to_do_list/screen/homepage.dart';
 
@@ -13,6 +14,23 @@ class Introduce extends StatefulWidget {
 }
 
 class _IntroduceState extends State<Introduce> {
+  String skip = 'skip';
+  SharedPreferences? _prefs;
+
+  @override
+  void initState() {
+    super.initState();
+    _skip();
+  }
+
+  _skip() async {
+    _prefs = await SharedPreferences.getInstance();
+
+    if (_prefs!.getString('skip') == 'skip') {
+      const HomePage();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return IntroductionScreen(
@@ -35,6 +53,8 @@ class _IntroduceState extends State<Introduce> {
       ],
       done: const Text('done', style: TextStyle(color: Colors.white)),
       onDone: () {
+        _prefs!.setString('skip', skip);
+
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const HomePage()));
       },
