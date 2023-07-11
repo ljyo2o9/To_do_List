@@ -27,7 +27,7 @@ class _IntroduceState extends State<Introduce> {
     _prefs = await SharedPreferences.getInstance();
 
     if (_prefs!.getString('skip') == 'skip') {
-      const HomePage();
+      const SafeArea(child: HomePage());
     }
   }
 
@@ -55,8 +55,8 @@ class _IntroduceState extends State<Introduce> {
       onDone: () {
         _prefs!.setString('skip', skip);
 
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const HomePage()));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => const SafeArea(child: HomePage())));
       },
       allowImplicitScrolling: true,
       showDoneButton: true,

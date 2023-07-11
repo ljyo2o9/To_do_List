@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: Introduce(),
+          home: SafeArea(child: Introduce()),
         );
       },
     );
