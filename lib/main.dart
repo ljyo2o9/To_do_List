@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:to_do_list/screen/introdution.dart';
+import 'package:to_do_list/MainScreen/introdution.dart';
 
 void main() {
   runApp(const MyApp());
