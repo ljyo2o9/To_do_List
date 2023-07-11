@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:provider/provider.dart';
 import 'package:to_do_list/list.dart';
 
-Container body() {
+Container body(BuildContext context) {
+  var listController = Provider.of<ListController>(context);
+
   return Container(
     decoration: const BoxDecoration(
       image: DecorationImage(
@@ -34,7 +37,7 @@ Container body() {
         ),
         Expanded(
           child: ListView.builder(
-            itemCount: todolist.length,
+            itemCount: listController.todolist.length,
             itemBuilder: (context, index) {
               return Card(
                 color: Colors.white,
@@ -45,12 +48,11 @@ Container body() {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         IconButton(
-                            //Plus
                             onPressed: () {},
                             icon: const Icon(Icons.more_vert)),
                         SizedBox(width: 20.w),
                         Text(
-                          todolist[index]['title'],
+                          listController.todolist[index],
                           style: TextStyle(fontSize: 14.sp),
                         ),
                       ],
