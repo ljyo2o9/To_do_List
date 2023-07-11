@@ -13,33 +13,24 @@ Container body() {
     ),
     child: Column(
       children: [
-        Row(
-          children: [
-            SizedBox(width: 20.w),
-            Padding(
-              padding: EdgeInsets.only(top: 13.h),
-              child: Text(
-                "Today List",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 23.sp,
-                  fontWeight: FontWeight.bold,
+        Padding(
+          padding: EdgeInsets.only(top: 20.h, bottom: 20.h),
+          child: Row(
+            children: [
+              SizedBox(width: 20.w),
+              Padding(
+                padding: EdgeInsets.only(top: 13.h),
+                child: Text(
+                  "Today List",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 23.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(width: 170.w),
-            Padding(
-              padding: EdgeInsets.only(top: 5.h),
-              child: Text(
-                "1",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 50.sp,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
         Expanded(
           child: ListView.builder(

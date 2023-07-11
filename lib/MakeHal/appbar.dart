@@ -25,5 +25,6 @@ AppBar appBar(context) {
         child: const Icon(Icons.check, color: Color(0xFF6BB16D)),
       ),
     ],
+    elevation: 0,
   );
 }
