@@ -45,12 +45,27 @@ Container body() {
           child: ListView.builder(
             itemCount: todolist.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                textColor: Colors.white,
-                iconColor: Colors.white,
-                leading: IconButton(
-                    icon: const Icon(Icons.more_vert), onPressed: () {}),
-                title: Text(todolist[index]['title']),
+              return Card(
+                color: Colors.white,
+                margin: EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 5.w),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        IconButton(
+                            //Plus
+                            onPressed: () {},
+                            icon: const Icon(Icons.more_vert)),
+                        SizedBox(width: 20.w),
+                        Text(
+                          todolist[index]['title'],
+                          style: TextStyle(fontSize: 14.sp),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               );
             },
           ),
