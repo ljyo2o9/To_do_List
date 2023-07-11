@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:provider/provider.dart';
 
 import 'package:to_do_list/MainScreen/homepage.dart';
-import 'package:to_do_list/list.dart';
 
 class Introduce extends StatefulWidget {
   const Introduce({Key? key}) : super(key: key);
