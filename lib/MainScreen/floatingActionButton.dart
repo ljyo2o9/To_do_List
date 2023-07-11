@@ -11,7 +11,7 @@ FloatingActionButton floatingActionButton(context) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const BasePage(),
+          builder: (context) => const SafeArea(child: BasePage()),
         ),
       );
     },
