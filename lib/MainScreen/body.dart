@@ -19,22 +19,49 @@ Container body(BuildContext context) {
         Padding(
           padding: EdgeInsets.only(top: 20.h, bottom: 20.h),
           child: Row(
+            //360 130 230
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(width: 20.w),
-              Padding(
-                padding: EdgeInsets.only(top: 13.h),
+              SizedBox(
+                width: 110.w,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 13.h),
+                  child: Text(
+                    "Today List",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 23.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 210.w,
                 child: Text(
-                  "Today List",
+                  listController.todolist.length.toString(),
+                  textAlign: TextAlign.end,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 23.sp,
+                    fontSize: 40.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
+              SizedBox(width: 20.w),
             ],
           ),
         ),
+        //ListView
+        //ListView
+        //ListView
+        //ListView
+        //ListView
+        //ListView
+        //ListView
+        //ListView
         Expanded(
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
