@@ -14,9 +14,6 @@ class Introduce extends StatefulWidget {
 }
 
 class _IntroduceState extends State<Introduce> {
-  String skip = 'skip';
-  SharedPreferences? _prefs;
-
   @override
   Widget build(BuildContext context) {
     return IntroductionScreen(
@@ -38,9 +35,11 @@ class _IntroduceState extends State<Introduce> {
             decoration: getPageDecoration()),
       ],
       done: const Text('done', style: TextStyle(color: Colors.white)),
-      onDone: () {
-        _prefs!.setString('skip', skip);
+      onDone: () async {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('skip', '1');
 
+        // ignore: use_build_context_synchronously
         Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => const SafeArea(child: HomePage())));
       },

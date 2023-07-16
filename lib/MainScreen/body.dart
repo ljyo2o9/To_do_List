@@ -37,6 +37,7 @@ Container body(BuildContext context) {
         ),
         Expanded(
           child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: listController.todolist.length,
             itemBuilder: (context, index) {
               return Card(

@@ -20,7 +20,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   SharedPreferences? _prefs;
-  int skip = 0;
+  String skip = 'nskip';
 
   @override
   void initState() {
@@ -31,9 +31,11 @@ class _MyAppState extends State<MyApp> {
   _skip() async {
     _prefs = await SharedPreferences.getInstance();
 
-    if (_prefs!.getString('skip') != null) {
-      skip = 1;
-    }
+    setState(() {
+      if (_prefs!.getString('skip') != null) {
+        skip = 'skip';
+      }
+    });
   }
 
   @override
@@ -43,10 +45,12 @@ class _MyAppState extends State<MyApp> {
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         builder: (context, child) {
+          print(skip);
+
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             home: SafeArea(
-                child: skip == 0 ? const Introduce() : const HomePage()),
+                child: skip == 'nskip' ? const Introduce() : const HomePage()),
           );
         },
       ),
