@@ -1,7 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:provider/provider.dart';
 import 'package:todolist/view_model/todo_view_model.dart';
 
@@ -69,6 +70,8 @@ class _ListCreateState extends State<ListCreate> {
                 mainList.add(textController.text);
                 await _pref!.setStringList('mainList', mainList);
                 await viewModel.getTodoList();
+
+                Navigator.pop(context);
               },
               child: Container(
                 width: 320.w,

@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todolist/view_model/todo_view_model.dart';
-
 import 'view/main_page.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
