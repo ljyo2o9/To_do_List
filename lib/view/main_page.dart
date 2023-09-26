@@ -14,7 +14,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +25,13 @@ class _MainPageState extends State<MainPage> {
         padding: EdgeInsets.only(top: 10.h),
         child: Consumer<TodoViewModel>(
           builder: (context, provider, child) {
-            List<TodoModel> todomodell = provider.todoList;
+            List<TodoModel> todoViewModel = provider.todoList;
 
             return ListView.builder(
-              itemCount: todomodell.length,
+              itemCount: todoViewModel.length,
               itemBuilder: (context, index) {
+                print(todoViewModel[index].title);
+
                 return Padding(
                   padding: EdgeInsets.fromLTRB(20.w, 5.h, 20.w, 5.h),
                   child: Container(
@@ -42,7 +43,7 @@ class _MainPageState extends State<MainPage> {
                       padding: EdgeInsets.all(8.h),
                       child: Center(
                         child: Text(
-                          todomodell[index].title,
+                          todoViewModel[index].title,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
