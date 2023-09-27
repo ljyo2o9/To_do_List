@@ -26,7 +26,7 @@ class _ListCreateState extends State<ListCreate> {
   }
 
   Future<void> getInstance() async {
-    box = await Hive.openBox('todoList');
+    box = Hive.box('todoList');
   }
 
   @override
@@ -69,10 +69,7 @@ class _ListCreateState extends State<ListCreate> {
               onPressed: () async {
                 if (box == null) await getInstance();
 
-                await box!.put(
-                  'todoList',
-                  TodoModel(title: textController.text),
-                );
+                await viewModel.postTodoList(textController.text);
                 await viewModel.getTodoList();
 
                 Navigator.pop(context);

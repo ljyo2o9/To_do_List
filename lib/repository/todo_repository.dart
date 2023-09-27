@@ -7,4 +7,8 @@ class TodoRepository {
   Future<List<TodoModel>> getTodoList() {
     return _dataSource.getTodoList();
   }
+
+  Future postTodoList(value) async {
+    await _dataSource.postTodoList(value);
+  }
 }

@@ -6,7 +6,7 @@ import 'package:todolist/model/todo_model.dart';
 class TodoViewModel extends ChangeNotifier {
   final TodoRepository _todoRepository = TodoRepository();
 
-  final List<TodoModel> _todoList = List.empty(growable: true);
+  List<TodoModel> _todoList = List.empty(growable: true);
 
   List<TodoModel> get todoList => _todoList;
 
@@ -17,7 +17,11 @@ class TodoViewModel extends ChangeNotifier {
   Future<void> getTodoList() async {
     List<TodoModel> items = await _todoRepository.getTodoList();
 
-    _todoList.addAll(items);
+    _todoList = items;
     notifyListeners();
+  }
+
+  Future postTodoList(value) async {
+    _todoRepository.postTodoList(value);
   }
 }
