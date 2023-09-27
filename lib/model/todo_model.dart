@@ -5,7 +5,7 @@ part 'todo_model.g.dart';
 @HiveType(typeId: 1)
 class TodoModel {
   @HiveField(1, defaultValue: '')
-  final String title;
+  late String title;
 
   @HiveField(2)
   final int id;
