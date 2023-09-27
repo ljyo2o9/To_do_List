@@ -6,6 +6,8 @@ import 'package:todolist/model/todo_model.dart';
 import 'package:todolist/view/create.dart';
 import 'package:todolist/view_model/todo_view_model.dart';
 
+import 'package:todolist/widget/todo_button.dart';
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -112,25 +114,6 @@ class _MainPageState extends State<MainPage> {
                                     Padding(
                                       padding: EdgeInsets.only(top: 20.h),
                                       child: GestureDetector(
-                                        child: Container(
-                                          width: 300.w,
-                                          height: 30.h,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: Colors.black,
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              '수정하기',
-                                              style: TextStyle(
-                                                fontSize: 15.sp,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
                                         onTap: () {
                                           viewModel.modifyTodoList(
                                             viewModel.todoList[index].id,
@@ -141,6 +124,7 @@ class _MainPageState extends State<MainPage> {
 
                                           Navigator.pop(context);
                                         },
+                                        child: todoBotton('수정하기', 300, 30),
                                       ),
                                     )
                                   ],
