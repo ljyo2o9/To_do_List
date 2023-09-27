@@ -9,6 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todolist/model/todo_model.dart';
 
 import 'package:todolist/widget/todo_button.dart';
+import 'package:todolist/widget/todo_textfield.dart';
 
 class ListCreate extends StatefulWidget {
   const ListCreate({super.key});
@@ -45,26 +46,7 @@ class _ListCreateState extends State<ListCreate> {
           Center(
             child: Padding(
               padding: EdgeInsets.only(top: 20.h, bottom: 20.h),
-              child: Container(
-                width: 320.w,
-                height: 420.h,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(10.w, 0.h, 10.w, 8.h),
-                  child: TextField(
-                    controller: textController,
-                    maxLines: 1000,
-                    decoration: const InputDecoration(
-                      hintText: '쓸 내용을 입력해주세요',
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ),
+              child: todoTextField(320, 420, textController),
             ),
           ),
           MaterialButton(

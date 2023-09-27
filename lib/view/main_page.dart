@@ -7,6 +7,7 @@ import 'package:todolist/view/create.dart';
 import 'package:todolist/view_model/todo_view_model.dart';
 
 import 'package:todolist/widget/todo_button.dart';
+import 'package:todolist/widget/todo_textfield.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -58,12 +59,14 @@ class _MainPageState extends State<MainPage> {
                 child: Padding(
                   padding: EdgeInsets.all(8.h),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       /// Text
                       Padding(
                         padding: EdgeInsets.only(left: 10.w),
-                        child: Center(
+                        child: SizedBox(
+                          width: 230.h,
                           child: Text(
                             todoViewModel[index].title,
                             style: const TextStyle(
@@ -85,32 +88,14 @@ class _MainPageState extends State<MainPage> {
                                 height: 200.h,
                                 child: Column(
                                   children: [
+                                    /// Todo TextField
                                     Padding(
                                       padding: EdgeInsets.only(top: 20.h),
-                                      child: Container(
-                                        width: 300.w,
-                                        height: 80.h,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          border:
-                                              Border.all(color: Colors.black),
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                            left: 10.w,
-                                            right: 10.w,
-                                          ),
-                                          child: TextField(
-                                            controller: modifyController,
-                                            maxLines: 1000,
-                                            decoration: const InputDecoration(
-                                              border: InputBorder.none,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
+                                      child: todoTextField(
+                                          300, 80, modifyController),
                                     ),
+
+                                    /// 수정하기 버튼
                                     Padding(
                                       padding: EdgeInsets.only(top: 20.h),
                                       child: GestureDetector(
