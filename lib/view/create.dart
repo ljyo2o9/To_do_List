@@ -19,18 +19,7 @@ class ListCreate extends StatefulWidget {
 }
 
 class _ListCreateState extends State<ListCreate> {
-  Box<TodoModel>? box;
   TextEditingController textController = TextEditingController();
-
-  @override
-  void initState() {
-    getInstance();
-    super.initState();
-  }
-
-  Future<void> getInstance() async {
-    box = Hive.box('todoList');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +42,6 @@ class _ListCreateState extends State<ListCreate> {
             ),
             MaterialButton(
               onPressed: () async {
-                if (box == null) await getInstance();
-
                 await viewModel.postTodoList(textController.text);
                 await viewModel.getTodoList();
 
