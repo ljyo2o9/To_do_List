@@ -19,6 +19,8 @@ class _MainPageState extends State<MainPage> {
     var viewModel = Provider.of<TodoViewModel>(context);
     List<TodoModel> todoViewModel = viewModel.todoList;
 
+    TextEditingController modifyController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -53,14 +55,107 @@ class _MainPageState extends State<MainPage> {
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(8.h),
-                  child: Center(
-                    child: Text(
-                      todoViewModel[index].title,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      /// Text
+                      Padding(
+                        padding: EdgeInsets.only(left: 10.w),
+                        child: Center(
+                          child: Text(
+                            todoViewModel[index].title,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+
+                      /// Modify Button
+                      GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return SizedBox(
+                                width: MediaQuery.of(context).size.width,
+                                height: 200.h,
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 20.h),
+                                      child: Container(
+                                        width: 300.w,
+                                        height: 80.h,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border:
+                                              Border.all(color: Colors.black),
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                            left: 10.w,
+                                            right: 10.w,
+                                          ),
+                                          child: TextField(
+                                            controller: modifyController,
+                                            maxLines: 1000,
+                                            decoration: const InputDecoration(
+                                              border: InputBorder.none,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 20.h),
+                                      child: GestureDetector(
+                                        child: Container(
+                                          width: 300.w,
+                                          height: 30.h,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.black,
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              '수정하기',
+                                              style: TextStyle(
+                                                fontSize: 15.sp,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          viewModel.modifyTodoList(
+                                            viewModel.todoList[index].id,
+                                            modifyController.text,
+                                          );
+
+                                          viewModel.getTodoList();
+
+                                          Navigator.pop(context);
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: Icon(
+                          Icons.mode,
+                          color: Colors.white,
+                          size: 20.w,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

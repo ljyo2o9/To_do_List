@@ -30,4 +30,9 @@ class TodoViewModel extends ChangeNotifier {
     await _todoRepository.delTodoList();
     notifyListeners();
   }
+
+  Future<void> modifyTodoList(int id, String text) async {
+    await _todoRepository.modifyTodoList(id, text);
+    notifyListeners();
+  }
 }

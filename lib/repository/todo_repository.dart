@@ -15,4 +15,8 @@ class TodoRepository {
   Future delTodoList() async {
     await _dataSource.delTodoList();
   }
+
+  Future modifyTodoList(int id, String text) async {
+    await _dataSource.modifyTodoList(id, text);
+  }
 }

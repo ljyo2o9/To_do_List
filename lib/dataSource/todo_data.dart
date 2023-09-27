@@ -35,4 +35,9 @@ class TodoDataSource {
 
     await box!.clear();
   }
+
+  Future modifyTodoList(int id, String text) async {
+    if (box == null) await init();
+    box!.put(id, TodoModel(title: text, id: id));
+  }
 }
