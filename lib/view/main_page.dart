@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:todolist/model/todo_model.dart';
 
 import 'package:todolist/view/create.dart';
+import 'package:todolist/view/modify.dart';
 import 'package:todolist/view_model/todo_view_model.dart';
 
 import 'package:todolist/widget/todo_button.dart';
@@ -80,42 +81,11 @@ class _MainPageState extends State<MainPage> {
                       /// Modify Button
                       GestureDetector(
                         onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return SizedBox(
-                                width: MediaQuery.of(context).size.width,
-                                height: 200.h,
-                                child: Column(
-                                  children: [
-                                    /// Todo TextField
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 20.h),
-                                      child: todoTextField(
-                                          300, 80, modifyController),
-                                    ),
-
-                                    /// 수정하기 버튼
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 20.h),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          viewModel.modifyTodoList(
-                                            viewModel.todoList[index].id,
-                                            modifyController.text,
-                                          );
-
-                                          viewModel.getTodoList();
-
-                                          Navigator.pop(context);
-                                        },
-                                        child: todoBotton('수정하기', 300, 30),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              );
-                            },
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ListModify(index: index),
+                            ),
                           );
                         },
                         child: Icon(
