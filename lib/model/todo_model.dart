@@ -7,9 +7,12 @@ class TodoModel {
   @HiveField(1, defaultValue: '')
   final String title;
 
-  TodoModel({required this.title});
+  @HiveField(2)
+  final int id;
+
+  TodoModel({required this.title, required this.id});
 
   factory TodoModel.fromMap(Map<String, dynamic> map) {
-    return TodoModel(title: map['title']);
+    return TodoModel(title: map['title'], id: map['id']);
   }
 }

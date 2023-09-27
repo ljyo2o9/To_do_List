@@ -25,7 +25,9 @@ class TodoDataSource {
   Future postTodoList(value) async {
     if (box == null) await init();
 
-    box!.add(TodoModel(title: value));
+    int id = box!.values.toList().length;
+    print(id);
+    box!.add(TodoModel(title: value, id: id));
   }
 
   Future delTodoList() async {
