@@ -41,26 +41,29 @@ class _ListCreateState extends State<ListCreate> {
         backgroundColor: Colors.black,
         title: const Text("Create"),
       ),
-      body: Column(
-        children: [
-          Center(
-            child: Padding(
-              padding: EdgeInsets.only(top: 20.h, bottom: 20.h),
-              child: todoTextField(320, 420, textController),
+      body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
+        child: Column(
+          children: [
+            Center(
+              child: Padding(
+                padding: EdgeInsets.only(top: 20.h, bottom: 20.h),
+                child: todoTextField(320, 420, textController),
+              ),
             ),
-          ),
-          MaterialButton(
-            onPressed: () async {
-              if (box == null) await getInstance();
+            MaterialButton(
+              onPressed: () async {
+                if (box == null) await getInstance();
 
-              await viewModel.postTodoList(textController.text);
-              await viewModel.getTodoList();
+                await viewModel.postTodoList(textController.text);
+                await viewModel.getTodoList();
 
-              Navigator.pop(context);
-            }, //width: 320.w,  height: 40.h,
-            child: todoBotton('생성하기', 320, 40),
-          ),
-        ],
+                Navigator.pop(context);
+              }, //width: 320.w,  height: 40.h,
+              child: todoBotton('생성하기', 320, 40),
+            ),
+          ],
+        ),
       ),
     );
   }
