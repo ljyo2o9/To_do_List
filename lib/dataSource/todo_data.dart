@@ -27,4 +27,10 @@ class TodoDataSource {
 
     box!.add(TodoModel(title: value));
   }
+
+  Future delTodoList() async {
+    if (box == null) await init();
+
+    await box!.clear();
+  }
 }

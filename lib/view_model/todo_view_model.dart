@@ -21,7 +21,13 @@ class TodoViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future postTodoList(value) async {
-    _todoRepository.postTodoList(value);
+  Future<void> postTodoList(value) async {
+    await _todoRepository.postTodoList(value);
+    notifyListeners();
+  }
+
+  Future<void> delTodoList() async {
+    await _todoRepository.delTodoList();
+    notifyListeners();
   }
 }

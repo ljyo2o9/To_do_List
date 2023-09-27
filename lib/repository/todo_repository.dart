@@ -11,4 +11,8 @@ class TodoRepository {
   Future postTodoList(value) async {
     await _dataSource.postTodoList(value);
   }
+
+  Future delTodoList() async {
+    await _dataSource.delTodoList();
+  }
 }
