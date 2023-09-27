@@ -7,9 +7,6 @@ import 'package:todolist/view/create.dart';
 import 'package:todolist/view/modify.dart';
 import 'package:todolist/view_model/todo_view_model.dart';
 
-import 'package:todolist/widget/todo_button.dart';
-import 'package:todolist/widget/todo_textfield.dart';
-
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -22,8 +19,6 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     var viewModel = Provider.of<TodoViewModel>(context);
     List<TodoModel> todoViewModel = viewModel.todoList;
-
-    TextEditingController modifyController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(

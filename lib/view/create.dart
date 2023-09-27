@@ -5,9 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:todolist/view_model/todo_view_model.dart';
 
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:todolist/model/todo_model.dart';
-
 import 'package:todolist/widget/todo_button.dart';
 import 'package:todolist/widget/todo_textfield.dart';
 
