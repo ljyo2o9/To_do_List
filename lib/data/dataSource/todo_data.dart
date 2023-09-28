@@ -1,5 +1,4 @@
-import 'package:todolist/model/todo_model.dart';
-
+import 'package:todolist/data/model/todo_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class TodoDataSource {

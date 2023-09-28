@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:todolist/view_model/todo_view_model.dart';
+import 'package:todolist/ui/view_model/todo_view_model.dart';
 
-import 'package:todolist/widget/todo_button.dart';
-import 'package:todolist/widget/todo_textfield.dart';
+import 'package:todolist/ui/widget/todo_button.dart';
+import 'package:todolist/ui/widget/todo_textfield.dart';
 
 class ListCreate extends StatefulWidget {
   const ListCreate({super.key});

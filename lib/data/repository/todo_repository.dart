@@ -1,5 +1,5 @@
-import 'package:todolist/dataSource/todo_data.dart';
-import 'package:todolist/model/todo_model.dart';
+import 'package:todolist/data/dataSource/todo_data.dart';
+import 'package:todolist/data/model/todo_model.dart';
 
 class TodoRepository {
   final TodoDataSource _dataSource = TodoDataSource();

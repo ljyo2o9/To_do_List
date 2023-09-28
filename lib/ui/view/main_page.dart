@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:todolist/model/todo_model.dart';
+import 'package:todolist/data/model/todo_model.dart';
 
-import 'package:todolist/view/create.dart';
-import 'package:todolist/view/modify.dart';
-import 'package:todolist/view_model/todo_view_model.dart';
+import 'package:todolist/ui/view/create.dart';
+import 'package:todolist/ui/view/modify.dart';
+import 'package:todolist/ui/view_model/todo_view_model.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
