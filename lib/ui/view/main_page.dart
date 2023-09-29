@@ -62,7 +62,7 @@ class _MainPageState extends State<MainPage> {
                       Padding(
                         padding: EdgeInsets.only(left: 10.w),
                         child: SizedBox(
-                          width: 230.h,
+                          width: 210.h,
                           child: Text(
                             todoViewModel[index].title,
                             style: const TextStyle(
@@ -74,20 +74,41 @@ class _MainPageState extends State<MainPage> {
                       ),
 
                       /// Modify Button
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ListModify(index: index),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(right: 10.w),
+                            child: GestureDetector(
+                              onTap: () {
+                                viewModel.delList(viewModel.todoList[index].id);
+                                print(viewModel.todoList[index].id);
+                                viewModel.getTodoList();
+                              },
+                              child: Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                                size: 20.w,
+                              ),
                             ),
-                          );
-                        },
-                        child: Icon(
-                          Icons.mode,
-                          color: Colors.white,
-                          size: 20.w,
-                        ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ListModify(index: index),
+                                ),
+                              );
+                            },
+                            child: Icon(
+                              Icons.mode,
+                              color: Colors.white,
+                              size: 20.w,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

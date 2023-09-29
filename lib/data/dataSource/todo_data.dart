@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 class TodoDataSource {
   Box<TodoModel>? box;
+  int id = 0;
 
   TodoDataSource() {
     init();
@@ -24,9 +25,8 @@ class TodoDataSource {
   Future postTodoList(value) async {
     if (box == null) await init();
 
-    int id = box!.values.toList().length;
-    print(id);
-    box!.add(TodoModel(title: value, id: id));
+    id = box!.values.toList().length;
+    await box!.add(TodoModel(title: value, id: id));
   }
 
   Future delTodoList() async {
@@ -37,6 +37,12 @@ class TodoDataSource {
 
   Future modifyTodoList(int id, String text) async {
     if (box == null) await init();
-    box!.put(id, TodoModel(title: text, id: id));
+    await box!.put(id, TodoModel(title: text, id: id));
+  }
+
+  Future delList(id) async {
+    if (box == null) await init();
+
+    await box!.delete(id);
   }
 }
