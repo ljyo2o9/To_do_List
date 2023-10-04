@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+
 import 'package:provider/provider.dart';
 import 'package:todolist/data/model/todo_model.dart';
 
@@ -47,22 +49,54 @@ class _MainPageState extends State<MainPage> {
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.fromLTRB(20.w, 5.h, 20.w, 5.h),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(15),
+              child: Slidable(
+                key: ValueKey(index),
+                startActionPane: ActionPane(
+                  motion: const ScrollMotion(),
+                  children: [
+                    SlidableAction(
+                      onPressed: (context) async {
+                        await viewModel.delList(viewModel.todoList[index].id);
+                        await viewModel.getTodoList();
+                      },
+                      flex: 1,
+                      borderRadius: BorderRadius.circular(15),
+                      backgroundColor: Colors.red,
+                      autoClose: false,
+                      icon: Icons.delete,
+                      label: 'Delete',
+                    ),
+                    SlidableAction(
+                      onPressed: (context) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ListModify(index: index),
+                          ),
+                        );
+                      },
+                      flex: 1,
+                      borderRadius: BorderRadius.circular(15),
+                      backgroundColor: Colors.blue,
+                      autoClose: false,
+                      icon: Icons.mode,
+                      label: 'Modify',
+                    ),
+                  ],
                 ),
-                child: Padding(
-                  padding: EdgeInsets.all(8.h),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      /// Text
-                      Padding(
-                        padding: EdgeInsets.only(left: 10.w),
-                        child: SizedBox(
-                          width: 210.h,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.h),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 10.w),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 16.h,
+                        child: Center(
                           child: Text(
                             todoViewModel[index].title,
                             style: const TextStyle(
@@ -72,45 +106,7 @@ class _MainPageState extends State<MainPage> {
                           ),
                         ),
                       ),
-
-                      /// Modify Button
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(right: 10.w),
-                            child: GestureDetector(
-                              onTap: () {
-                                viewModel.delList(viewModel.todoList[index].id);
-                                print(viewModel.todoList[index].id);
-                                viewModel.getTodoList();
-                              },
-                              child: Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                                size: 20.w,
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      ListModify(index: index),
-                                ),
-                              );
-                            },
-                            child: Icon(
-                              Icons.mode,
-                              color: Colors.white,
-                              size: 20.w,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
@@ -138,3 +134,5 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
+
+void doNothing(BuildContext context) {}
